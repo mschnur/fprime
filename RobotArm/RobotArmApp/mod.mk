@@ -1,6 +1,6 @@
-SRC = 	RobotArmComponentAi.xml 
-		#RpiDemoComponentImpl.cpp
+SRC = 	RobotArmComponentAi.xml \
+		RobotArmComponentImpl.cpp
 		
-HDR = 	#RpiDemoComponentImpl.hpp
+HDR = 	RobotArmComponentImpl.hpp
 					
 
