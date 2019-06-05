@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../Autocoders/Python/schema/ISF/component_schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
+<component name="LinuxI2CDriver" kind="passive" namespace="Drv" modeler="true">
+
+    <import_port_type>Drv/I2CPorts/I2CPortAi.xml</import_port_type>
+    <ports>
+    
+        <port name="I2CWrite" data_type="Drv::I2C"  kind="guarded_input"    max_number="1">
+        </port>
+    </ports>
+
+</component>
