@@ -1,6 +1,6 @@
 # derive module name from directory
 
-MODULE_DIR = RPI/RpiDemo
+MODULE_DIR = RobotArm/ServoComponent
 MODULE = $(subst /,,$(MODULE_DIR))
 
 BUILD_ROOT ?= $(subst /$(MODULE_DIR),,$(CURDIR))

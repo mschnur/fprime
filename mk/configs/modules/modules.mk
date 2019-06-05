@@ -194,8 +194,9 @@ RPI_MODULES := \
   	$(UTILS_MODULES)
 
 RobotArm_APP_MODULES := \
-	RobotArm/ServoPorts
-	
+	RobotArm/ServoPorts \
+	RobotArm/ServoComponent
+
 RobotArm_MODULES := \
 	\
 	$(RobotArm_APP_MODULES) \

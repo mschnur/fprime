@@ -2,8 +2,9 @@
 <?xml-model href="../../schema/ISF/component_schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 
 <component name="ServoComponent" kind="active" namespace="RobotArm">
-    <import_port_type>RobotArm/ServoPortAi.xml</import_port_type>
-	
+    <import_port_type>RobotArm/ServoPort/ServoPortAi.xml</import_port_type>
+    <import_port_type>Drv/I2cDriverPorts/I2cPortAi.xml</import_port_type>
+   	
     <comment>A component for the control of a servo motor</comment>
     <ports>
 
@@ -60,7 +61,7 @@
 	    
 	    <args>
 	        <arg name="initAngle" type="F32">
-		    <commment>the initial angle</comment>
+		    <comment>the initial angle</comment>
 		</arg>
 		
 		<arg name="nextAngle" type="F32">
