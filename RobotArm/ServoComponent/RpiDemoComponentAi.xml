@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schema/ISF/component_schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
+<component name="ServoComponent" kind="active" namespace="RobotArm">
+    <import_port_type>RobotArm/ServoPortAi.xml</import_port_type>
+	
+    <comment>A component for the control of a servo motor</comment>
+    <ports>
+
+        <port name="SetServo" data_type="RobotArm::SetServo" kind="async_input">
+            <comment>
+            Anync input port that takes in command from App to Servo.
+            </comment>
+        </port>
+
+        <port name="I2C" data_type="Drv::I2C" kind="output"  max_number="1">
+            <comment>
+            Output port to [I2C driver]
+            </comment>
+        </port>
+
+	<port name="CmdToServo" data_type="RobotArm::CmdToServo" kind="async_input">
+	    <comment>
+	    Async input port from Command Dispatcher To servo. Designed for individual testing of servo component.
+	    </comment>
+	</port>
+
+    </ports>
+    
+    <commands>
+    	
+	<command kind="async" opcode="0x0" mnemonic="SVO_SETANG">
+		<comment>
+		Servo angle set command from app
+		</comment>
+
+		<args>
+			<arg name="angle" type="F32">
+			<comment>Input angle from command</comment>
+			</arg>
+		</args>
+	</command>
+
+	<command kind="async" opcode="0x1" mnemonic="SVO_DISABLE">
+		<comment>Command to disable the servo</comment>
+	</command>
+
+	<command kind="async" opcode="0x2" mnemonic="SVO_ENABLE">
+		<comment>Command to enable the servo</comment>
+	</command>
+	
+    </commands>
+
+    <events>
+	
+	<event id="0" name="SVO_AngleChange" severity="ACTIVITY_HI" format_string="Angle is changing from %f to %f">
+	    <comment>
+	    Angle Change of Servo
+	    </comment>
+	    
+	    <args>
+	        <arg name="initAngle" type="F32">
+		    <commment>the initial angle</comment>
+		</arg>
+		
+		<arg name="nextAngle" type="F32">
+		    <comment>the next angle</comment>
+		</arg>
+            </args>
+	</event>
+    </events>
+
+    <telemetry>
+
+	<channel id="0" name="SVO_Angle" data_type="F32">
+		<comment>Command angle for servo</comment>
+	</channel>
+
+	<channel id="1" name="SVO_Register" data_type="U16" format_string="0x%4X">
+		<comment>Register value of servo</comment>
+	</channel>
+
+
+    </telemetry>
+
+</component>
+
