@@ -2,8 +2,8 @@
 <?xml-model href="../../schema/ISF/component_schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 
 <component name="ServoComponent" kind="active" namespace="RobotArm">
-    <import_port_type>RobotArm/ServoPort/ServoPortAi.xml</import_port_type>
-    <import_port_type>Drv/I2cDriverPorts/I2cPortAi.xml</import_port_type>
+    <import_port_type>RobotArm/ServoPorts/ServoPortAi.xml</import_port_type>
+    <import_port_type>Drv/I2CPorts/I2CPortAi.xml</import_port_type>
    	
     <comment>A component for the control of a servo motor</comment>
     <ports>
@@ -19,12 +19,6 @@
             Output port to [I2C driver]
             </comment>
         </port>
-
-	<port name="CmdToServo" data_type="RobotArm::CmdToServo" kind="async_input">
-	    <comment>
-	    Async input port from Command Dispatcher To servo. Designed for individual testing of servo component.
-	    </comment>
-	</port>
 
     </ports>
     

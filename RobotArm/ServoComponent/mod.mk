@@ -1,5 +1,5 @@
-SRC = 	ServoComponentAi.xml 
+SRC = 	ServoComponentAi.xml ServoComponentComponentImpl.cpp
 		
-HDR = 	
+HDR = 	ServoComponentComponentImpl.hpp
 					
 
