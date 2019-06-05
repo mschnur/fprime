@@ -13,7 +13,12 @@
 
 #include <Drv/LinuxI2CDriver/LinuxI2CDriverComponentImpl.hpp>
 #include "Fw/Types/BasicTypes.hpp"
+#include "Fw/Types/Assert.hpp"
 
+#include <unistd.h>  // for open/close
+#include <fcntl.h>  // for ioctl
+#include <sys/ioctl.h> // for ioctl
+#include <linux/i2c-dev.h> // for i2c ioctl stuff
 namespace Drv {
 
   // ----------------------------------------------------------------------
@@ -25,12 +30,21 @@ namespace Drv {
     LinuxI2CDriverComponentImpl(
         const char *const compName
     ) :
-      LinuxI2CDriverComponentBase(compName)
+      LinuxI2CDriverComponentBase(compName),
 #else
-    LinuxI2CDriverComponentImpl(void)
+    LinuxI2CDriverComponentImpl(void),
 #endif
+    m_i2cFileDescriptor(-1)
   {
 
+  }
+
+  void LinuxI2CDriverComponentImpl ::
+    open(const char* i2cFilePath)
+  {
+    FW_ASSERT(i2cFilePath != NULL);
+    m_i2cFileDescriptor = ::open(i2cFilePath, O_WRONLY);
+    FW_ASSERT(m_i2cFileDescriptor != -1);
   }
 
   void LinuxI2CDriverComponentImpl ::
@@ -44,7 +58,9 @@ namespace Drv {
   LinuxI2CDriverComponentImpl ::
     ~LinuxI2CDriverComponentImpl(void)
   {
-
+    if (m_i2cFileDescriptor != -1) {
+      close(m_i2cFileDescriptor);
+    }
   }
 
   // ----------------------------------------------------------------------
@@ -58,7 +74,16 @@ namespace Drv {
         Fw::Buffer &i2cBuffer
     )
   {
-    // TODO
+    FW_ASSERT(m_i2cFileDescriptor != -1);
+
+    int ioctlStatus = ioctl(m_i2cFileDescriptor, I2C_SLAVE, i2cAddress); // Set the I2C address for upcoming
+                                                                         //  transactions
+
+    FW_ASSERT(ioctlStatus != -1);
+
+    int writeStatus = write(m_i2cFileDescriptor, (void *) i2cBuffer.getdata(), i2cBuffer.getsize()); // initiate write
+
+    FW_ASSERT(writeStatus != -1);
   }
 
 } // end namespace Drv

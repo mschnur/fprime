@@ -37,6 +37,8 @@ namespace Drv {
 #endif
       );
 
+      void open(const char* i2cFilePath);
+
       //! Initialize object LinuxI2CDriver
       //!
       void init(
@@ -61,6 +63,7 @@ namespace Drv {
           Fw::Buffer &i2cBuffer 
       );
 
+      int m_i2cFileDescriptor;
 
     };
 
