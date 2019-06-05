@@ -193,9 +193,12 @@ RPI_MODULES := \
 	\
   	$(UTILS_MODULES)
 
-RobotArm_APP_MODULES :=
-
+RobotArm_APP_MODULES := \
+	RobotArm/ServoPorts
+	
 RobotArm_MODULES := \
+	\
+	$(RobotArm_APP_MODULES) \
 	\
 	$(SVC_MODULES) \
 	\
