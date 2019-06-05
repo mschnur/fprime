@@ -23,5 +23,7 @@
 |Event Name|ID|Description|Arg Name|Arg Type|Arg Size|Description
 |---|---|---|---|---|---|---|
 |SVO_AngleChange|0 (0x0)|Angle Change of Servo| | | | |
-| | | |initAngle|F32||the initial angle|
-| | | |nextAngle|F32||the next angle|
+| | | |servoNumber|U32||The servo number.|
+| | | |initAngle|F32||The previous angle.|
+| | | |nextAngle|F32||The new angle.|
+| | | |registerValue|U16||The new register value.|

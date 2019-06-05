@@ -48,20 +48,28 @@
 
     <events>
 	
-	<event id="0" name="SVO_AngleChange" severity="ACTIVITY_HI" format_string="Angle is changing from %f to %f">
+	<event id="0" name="SVO_AngleChange" severity="ACTIVITY_HI" format_string="Servo %d angle is changing from %f to %f (new register value: 0x%4X)">
 	    <comment>
 	    Angle Change of Servo
 	    </comment>
 	    
 	    <args>
+	    	<arg name="servoNumber" type="U32">
+			    <comment>The servo number.</comment>
+			</arg>
+
 	        <arg name="initAngle" type="F32">
-		    <comment>the initial angle</comment>
-		</arg>
-		
-		<arg name="nextAngle" type="F32">
-		    <comment>the next angle</comment>
-		</arg>
-            </args>
+			    <comment>The previous angle.</comment>
+			</arg>
+			
+			<arg name="nextAngle" type="F32">
+			    <comment>The new angle.</comment>
+			</arg>
+
+			<arg name="registerValue" type="U16">
+			    <comment>The new register value.</comment>
+			</arg>
+    	</args>
 	</event>
     </events>
 

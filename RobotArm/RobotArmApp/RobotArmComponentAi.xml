@@ -18,7 +18,7 @@
             Input Scheduler port - called at 1Hz and 10Hz
             </comment>
         </port>
-        <port name="ServoOutPort" data_type="RobotArm::Servo" kind="output"  max_number="4">
+        <port name="ServoOutPort" data_type="RobotArm::SetServo" kind="output"  max_number="4">
             <comment>
             Output Port for sending angle to servos
             </comment>

@@ -15,10 +15,10 @@
 #include "Fw/Types/BasicTypes.hpp"
 #include "Fw/Types/Assert.hpp"
 
-#include <unistd.h>  // for open/close
-#include <fcntl.h>  // for ioctl
-#include <sys/ioctl.h> // for ioctl
-#include <linux/i2c-dev.h> // for i2c ioctl stuff
+#include <unistd.h> // required for I2C device access
+#include <fcntl.h>  // required for I2C device configuration
+#include <sys/ioctl.h> // required for I2C device usage
+#include <linux/i2c-dev.h> // required for constant definitions
 namespace Drv {
 
   // ----------------------------------------------------------------------
